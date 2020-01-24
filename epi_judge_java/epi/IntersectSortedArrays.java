@@ -13,6 +13,28 @@ public class IntersectSortedArrays {
 
     int indexA = 0;
     int indexB = 0;
+    while (indexA < A.size() && indexB < B.size()) {
+      if (A.get(indexA).equals(B.get(indexB)) &&
+              (indexA == 0 || !A.get(indexA).equals(A.get(indexA-1)))) {
+        result.add(A.get(indexA));
+        indexA++;
+        indexB++;
+      } else if (A.get(indexA) < B.get(indexB)) {
+        indexA++;
+      } else {
+        indexB++;
+      }
+    }
+
+    return result;
+  }
+
+  public static List<Integer> intersectTwoSortedArraysFirstTry(List<Integer> A,
+                                                               List<Integer> B) {
+    List<Integer> result = new ArrayList<>();
+
+    int indexA = 0;
+    int indexB = 0;
     while (indexA != A.size() && indexB != B.size()) {
       int valA = A.get(indexA);
       int valB = B.get(indexB);
